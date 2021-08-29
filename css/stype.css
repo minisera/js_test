@@ -1,0 +1,15 @@
+.container {
+  width: 360px;
+  margin: 20px auto;
+  padding: 15px;
+  background: #efefef;
+  text-align: center;
+}
+
+#omikuji {
+  width: 240px;
+  height: 240px;
+  background-color: burlywood;
+  margin: 30px auto;
+  text-align: center;
+}
