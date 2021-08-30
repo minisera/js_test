@@ -75,12 +75,14 @@ const options = {
   method: 'GET'
 };
 
+const fetchDogApi = fetch(url, options);
+
 function getDogImage(url, options) {
   return fetch(url, options)
-  .then( response => {
+  .then( response => {  
     if (response.ok) {
-      response.json()
-    }
+      return response.json() 
+    } 
     throw new Error('error');
   }).catch(e => console.log(e.message));
 }
