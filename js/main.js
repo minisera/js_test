@@ -1,5 +1,6 @@
 'use strict';
 
+// 占い
 const btn = document.getElementById('btn');
 const result = document.getElementById('result');
 
@@ -17,6 +18,7 @@ btn.addEventListener('click', () => {
   }
 });
 
+// おみくじ
 const btn2 = document.getElementById('omikuji');
 
 btn2.addEventListener('click', () => {
@@ -26,6 +28,7 @@ btn2.addEventListener('click', () => {
   btn2.innerText = result[number];
 });
 
+// カレンダー
 const date = new Date();
 const year = date.getFullYear();
 const month = date.getMonth() + 1;
@@ -65,3 +68,28 @@ for (let n = 0; n < 6; n++) {
 createHtml += '</table>'
 
 document.querySelector('#calendar').innerHTML = createHtml;
+
+// 非同期処理の練習 dog api
+const url = 'https://dog.ceo/api/breeds/image/random';
+const options = {
+  method: 'GET'
+};
+
+function getDogImage(url, options) {
+  return fetch(url, options)
+  .then( response => {
+    if (response.ok) {
+      response.json()
+    }
+    throw new Error('error');
+  }).catch(e => console.log(e.message));
+}
+
+async function getImage(url,options){
+  const response = await getDogImage(url, options);
+  const imageElement = document.createElement('img');
+  imageElement.src = response.message;
+  document.body.appendChild(imageElement);
+}
+
+getImage(url, options);
