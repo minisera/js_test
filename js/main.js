@@ -91,7 +91,14 @@ async function getImage(url,options){
   const response = await getDogImage(url, options);
   const imageElement = document.createElement('img');
   imageElement.src = response.message;
+  imageElement.setAttribute('width',400);
   document.body.appendChild(imageElement);
 }
 
 getImage(url, options);
+
+const btn3 = document.getElementById('dog_api');
+
+btn3.addEventListener('click',() => {
+  getImage(url,options);
+});
